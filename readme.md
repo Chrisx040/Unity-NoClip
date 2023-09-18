@@ -16,7 +16,7 @@
 
 
 
-<pre> <code>// é importante usar incluir essa biblioteca no projeto.
+<pre><code>// é importante usar incluir essa biblioteca no projeto.
 
 #include &lt;cmath&gt;
 
