@@ -22,7 +22,7 @@
 
 bool NoClip = false;
   
-void (*get_radius)(void *instance, float radius);
+void (*set_radius)(void *instance, float radius);
 
 void (old_Player)(void *instance);
 void Player(void *instance) {
@@ -40,7 +40,7 @@ void Player(void *instance) {
 
 MSHookFunction((void *) getAbsoluteAddress("libil2cpp.so", 0x00000, (void *) &Player, (void **) &old_Player); //instância do jogador   
 
-  
+set_radius = (void(*)(void*, float))getAbsoluteAdress("libil2cpp.so", 0x00000); //localizado na classe CharacterController
 
   
 </code>
