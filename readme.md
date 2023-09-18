@@ -1,1 +1,49 @@
-<h1 tabindex="-1" dir="auto"><a id="user-content-universal-unity-noclip" class="anchor" aria-hidden="true" tabindex="-1" href="#universal-unity-noclip"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a>Universal-Unity-NoClip</h1>
+
+<h1>Unity NoClip</h1>
+
+
+<h3>siga os passos:</h3>
+<li>escolha um jogo unity</li>
+<li>pegue a libil2cpp.so e a globalmetadata.dat</li>
+
+
+
+
+
+</br></br></br></br>
+
+
+
+
+
+<pre> <code>// é importante usar incluir essa biblioteca no projeto.
+
+#include &lt;cmath&gt;
+
+bool NoClip = false;
+  
+void (*get_radius)(void *instance, float radius);
+
+void (old_Player)(void *instance);
+void Player(void *instance) {
+   if (instance != NULL) {
+    if (NoClip) {
+    set_radius(instance,INFINITY);
+    }
+   }
+  old_Player(instance);
+}
+
+MSHookFunction((void *) getAbsoluteAddress("libil2cpp.so", 0x00000, (void *) &Player, (void **) &old_Player); //instância do jogador   
+
+  
+
+  
+</code>
+
+  
+</pre>
+
+
+
+
