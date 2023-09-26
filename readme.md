@@ -9,43 +9,46 @@
 
 
 
+</br>
 
-</br></br></br></br>
+<p>o jogo que usarei como exemplo será o <strong>blockstrike</strong> (versão antiga)</p>
+
+<p>primeiro passo devemos encontrar a classe do nosso jogador.</p>
+
+<p>no meu caso é a classe <strong>PlayerInput</strong></p>
+
+<p>irei usar o metódo Update() para nosso gancho C++</p>
+
+<p>agora devemos procurar um field que se refere a classe CharacterController ou uma classe que se refere a CharacterController</br> na classe do meu jogador tem o field que aponta para a classe <strong>CharacterController</p>
 
 
 
 
+<code>public CharacterController mCharacterController; // 0x8C</code>
+ </br>
 
-<pre><code>// é importante usar incluir essa biblioteca no projeto.
+<p>após isso ja podemos fazer nossa função em C++</p>
 
-#include &lt;cmath&gt;
+<pre><code>#include &lt;cmath&gt;
 
-bool NoClip = false;
-  
 void (*set_radius)(void *instance, float radius);
 
-void (old_Player)(void *instance);
+void (*_Player)(void *instance);
 void Player(void *instance) {
-   if (instance != NULL) {
-   void *CharacterController = *(void**)((uint64_t)instance + 0x0);
-  // acessando a classe CharacterController atraves da classe do player para alterar o metódo set_radius
-  if (CharacterController != NULL) {
-    if (NoClip) {
-    set_radius(instance,INFINITY);
+    if (instance != NULL) {
+      void *CharacterController = *(void**)((uin64_t)instance + 0x8C);
+      if (CharacterController != NULL) {
+        set_radius(CharacterController,INFINITY)
+      }
     }
-   }
-  }
-  old_Player(instance);
+    _Player(instance)
 }
 
-MSHookFunction((void *) getAbsoluteAddress("libil2cpp.so", 0x00000, (void *) &Player, (void **) &old_Player); //instância do jogador   
 
-set_radius = (void(*)(void*, float))getAbsoluteAdress("libil2cpp.so", 0x00000); //localizado na classe CharacterController
+MSHookFunction((void *) getAbsoluteAddress("libil2cpp.so", 0x00000), (void *) &Player, (void **) &_Player); // PlayerInput | update();  
 
-  
+set_radius = (void(*)(void*,float))getAbsoluteAddress("libil2cpp.so", 0x000000) //CharacterController | set_radius(float value);
 </code>
-
-  
 </pre>
 
 
