@@ -19,7 +19,7 @@
 
 <p>irei usar o metódo Update() para nosso gancho C++</p>
 
-<p>agora devemos procurar um field que se refere a classe CharacterController ou uma classe que se refere a CharacterController</br> na classe do meu jogador tem o field que aponta para a classe <strong>CharacterController</p>
+<p>agora devemos procurar um field que se refere a classe CharacterController ou uma classe que se refere a CharacterController </br>na classe do meu jogador tem o field que aponta para a classe <strong>CharacterController</p>
 
 
 
